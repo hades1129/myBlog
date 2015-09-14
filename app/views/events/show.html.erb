@@ -1,0 +1,24 @@
+<%= @event.name %>
+<%= simple_format(@event.description) %>
+<% if current_user %>
+    <%= link_to '编辑', edit_event_path(@event) %> 
+    <%= button_to '删除', event_path(@event), :method => :delete, :data => { :confirm => "Are you sure?" } %><br>
+
+<% else %>
+    <%= link_to '评论', new_comment_path(@message) %> 
+
+<% end %>
+
+<% @event.comments.each do |message| %>
+  <!--<li>-->
+   <div class="article_content col-sm-8">
+
+ 	<%= message.name %><br>
+ 	 <!--<div class="row">-->
+   <!--  <div class="col-sm-8">-->
+        <%= simple_format(message.content) %>
+   </div>
+<% end %>
+
+
+

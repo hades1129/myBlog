@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hades's Blog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<p>Hades's Blog</p>
+<%= link_to "Home", events_path %>
+<%= link_to "About",events_path %><br>
+
+
+      <% if current_user %>
+          <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
+          <%= link_to('修改密码', edit_registration_path(:user)) %>|
+          <%= link_to '新建', new_event_path(@event) %><br>
+
+
+      <% else %>
+          <%= link_to('注册', new_registration_path(:user)) %> |
+          <%= link_to('登入', new_session_path(:user)) %>
+      <% end %>
+
+
+<p style="color: green"><%= flash[:notice] %></p>
+<p style="color: red"><%= flash[:alert] %></p>
+<div class="container">
+    <%= yield %>
+</div>
+</body>
+</html>
