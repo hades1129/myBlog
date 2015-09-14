@@ -1,24 +1,43 @@
 <%= @event.name %>
 <%= simple_format(@event.description) %>
 <% if current_user %>
-    <%= link_to '编辑', edit_event_path(@event) %> 
-    <%= button_to '删除', event_path(@event), :method => :delete, :data => { :confirm => "Are you sure?" } %><br>
+  <%= link_to '编辑', edit_event_path(@event) %> 
+  <%= button_to '删除', event_path(@event), :method => :delete, :data => { :confirm => "Are you sure?" } %><br>
 
 <% else %>
-    <%= link_to '评论', new_comment_path(@message) %> 
+  <h2>添加评论:</h2>
+  <%= form_for([@event, @event.comments.build]) do |f| %>
+    <p>
+      <%= f.label :commenter %><br>
+      <%= f.text_field :commenter %>
+    </p>
+    <p>
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
 
 <% end %>
 
-<% @event.comments.each do |message| %>
-  <!--<li>-->
-   <div class="article_content col-sm-8">
 
- 	<%= message.name %><br>
- 	 <!--<div class="row">-->
-   <!--  <div class="col-sm-8">-->
-        <%= simple_format(message.content) %>
-   </div>
+<h2>Comments</h2>
+<% @event.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
 <% end %>
+
+
+
 
 
 

@@ -1,9 +1,0 @@
-<%= form_for @message, :url => comments_path  do |f| %>
-    <%= f.label :name, "Name" %>
-    <%= f.text_field :name %>
-
-    <%= f.label :content, "content" %>
-    <%= f.text_area :content %>
-
-    <%= f.submit "Create" %>
-<% end %>

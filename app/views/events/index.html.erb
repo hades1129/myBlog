@@ -1,28 +1,11 @@
-<!--<ul>-->
-<!--<title>Hades's Blog</title>-->
 
 <% @events.each do |event| %>
-  <!--<li>-->
    <div class="article_content col-sm-8">
-
- 	<!--<%= event.name %><br>-->
- 	 <!--<div class="row">-->
-   <!--  <div class="col-sm-8">-->
+ 	   <div class="row">
+       <div class="col-sm-8">
       <%= link_to event.name, event_path(event) %><br>
       <p><%= event.description %></p>
-   </div>
-
-     <!--</div>-->
-     <!--<%= button_to 'Delete', event_path(event), :method => :delete, :data => { :confirm => "Are you sure?" } %><br>-->
-
-     
-
-    <!--</div>-->
-  <!--</li>-->
+       </div>  
+      </div>
+    </div>
 <% end %>
-<!--<% if current_user %>-->
-<!--    <%= link_to '新建', new_event_path(@event) %><br>-->
-<!--<% end %>-->
-
-<!--</ul>-->
-<!--<%= link_to 'New Event', new_event_path %>-->
